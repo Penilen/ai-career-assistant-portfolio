@@ -22,6 +22,14 @@ All seven cases passed within the scenarios available to test. An empty API resp
 - **Missing application date.** The user verified that an empty source cell explained the missing date and that the correct date appeared after refresh.
 - **Chrome form diagnostic.** A stable search input ID resolved a DevTools warning. Focused desktop and mobile Chrome checks confirmed that the warning cleared and search, filtering, and reset still worked.
 
+## Public demo deployment and acceptance
+
+The static portfolio build deployed successfully to GitHub Pages from commit `50e11d9`. The live dashboard uses nine fictional records bundled with the frontend and requires no sign-in or installation. [Live demo](https://penilen.github.io/ai-career-assistant-portfolio/) · [Successful deployment run](https://github.com/Penilen/ai-career-assistant-portfolio/actions/runs/46079641935)
+
+**Manual public acceptance.** The user confirmed that all eight public acceptance checks passed in Chrome Incognito. The result was reported for the full checklist. Individual outcomes were not supplied with the confirmation.
+
+**Deployment warnings.** The deployment workflow emitted non-blocking Node.js deprecation warnings. The run completed successfully. Review the action runtime versions during future workflow maintenance.
+
 ## Automated checks
 
 The signed-off version passed TypeScript, 20 Node.js unit tests, 21 Chromium Playwright tests, and the production build. The original post-merge Dashboard QA workflow passed. The public workflow configuration independently checks TypeScript, unit tests, and Chromium E2E on dashboard changes. Its Sheets tests use a simulated upstream response.

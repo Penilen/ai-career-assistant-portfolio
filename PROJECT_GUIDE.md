@@ -1,6 +1,6 @@
 # AI Career Assistant — technical walkthrough and presentation guide
 
-**Scope:** The local React dashboard, Node.js API, and automated tests for the read-only Phase 1 MVP. The public preview uses the credential-free fixture. Phase 1 acceptance was approved on November 27, 2026. [Acceptance results](docs/QA.md#phase-1-acceptance)
+**Scope:** The local React dashboard, Node.js API, and automated tests for the read-only Phase 1 MVP. The public GitHub Pages demo uses the same dashboard with fictional data loaded directly in the browser. Phase 1 acceptance was approved on November 27, 2026. [Acceptance results](docs/QA.md#phase-1-acceptance)
 
 ## The project in one minute
 
@@ -18,7 +18,7 @@ The portfolio includes a reference Sheets backend and an independent fixture API
 | [dashboard/src/App.tsx](dashboard/src/App.tsx) | API loading states, statistics, filters, and dashboard views. |
 | [dashboard/src/application.ts](dashboard/src/application.ts) | Shared application type and allowed statuses and ratings. |
 | [dashboard/src/mapSheetRows.ts](dashboard/src/mapSheetRows.ts) | Converts Sheets rows to application records and reports validation issues. |
-| [dashboard/src/sampleApplications.ts](dashboard/src/sampleApplications.ts) | Nine fictional records for fixture mode and browser tests. |
+| [dashboard/src/sampleApplications.ts](dashboard/src/sampleApplications.ts) | Nine fictional records for the public demo, local fixture mode, and browser tests. |
 | [dashboard/server/](dashboard/server/) | Local Node.js API and read-only Sheets integration. |
 | [dashboard/src/index.css](dashboard/src/index.css) | Global fonts, colors, badges, animations, and responsive styles. |
 | [dashboard/tsconfig.json](dashboard/tsconfig.json) and [vite.config.ts](dashboard/vite.config.ts) | TypeScript checks and Vite development and build behavior. |
@@ -32,6 +32,14 @@ pnpm dev → Vite → index.html → main.tsx → App.tsx → Dashboard
 ```
 
 Vite serves the HTML entry point. React mounts into `<div id="root"></div>` from `main.tsx`. On load, `App.tsx` requests `/api/applications`, which Vite proxies to the local Node.js server. The frontend validates the response and shows either the dashboard or a load error. **Retry** sends a new request.
+
+## Public demo data flow
+
+```text
+GitHub Pages → static Vite build → browser-loaded fictional fixtures → Dashboard
+```
+
+The manual [Pages workflow](.github/workflows/deploy-portfolio.yml) runs `pnpm build:portfolio` in `dashboard/` and uploads only `dashboard/dist`. The build uses the `/ai-career-assistant-portfolio/` base path. React loads the bundled fixtures directly and calculates their dates when the page opens. The demo requires no backend, Google credentials, installation, or sign-in. [Live demo](https://penilen.github.io/ai-career-assistant-portfolio/) · [Deployment and acceptance results](docs/QA.md#public-demo-deployment-and-acceptance)
 
 ## What an application contains
 

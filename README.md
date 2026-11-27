@@ -7,13 +7,15 @@
 [![Node.js 22](https://img.shields.io/badge/Node.js-22-339933?logo=nodedotjs&logoColor=white)](dashboard/.mise.toml)
 [![Dashboard QA workflow](https://img.shields.io/badge/Dashboard_QA-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)](.github/workflows/dashboard-qa.yml)
 
+**[Live Demo](https://penilen.github.io/ai-career-assistant-portfolio/)** · Explore nine fictional applications in your browser. No installation or sign-in required.
+
 ## Project Overview
 
 Tracking job applications in a spreadsheet makes it easy to record updates, but finding overdue follow-ups and deciding what to do next still means scanning rows. **AI Career Assistant** brings those decisions into a searchable dashboard while keeping Google Sheets as the source of truth.
 
-I developed this as an early-career Informatics graduate to practice turning a real workflow into a tested web application. The current dashboard is a local, read-only application. I used an AI coding assistant in the development workflow. The dashboard itself has no AI API integration.
+I developed this as an early-career Informatics graduate to practice turning a real workflow into a tested web application. The dashboard is read-only and has a public fictional-data demo. I used an AI coding assistant in the development workflow. The dashboard itself has no AI API integration.
 
-[Try the credential-free demo](#quick-start) with the fictional records shown below.
+For local development, follow the [Quick Start](#quick-start).
 
 ## Key Features
 
@@ -61,7 +63,7 @@ All three screenshots use the same nine fictional records from the repository's 
 React dashboard → Vite development proxy → Node.js API → Google Sheets API
 ```
 
-The reference backend validates spreadsheet rows, normalizes dates, and returns application records and aggregate skipped-row counts from `GET /api/applications`. React validates the response before rendering. This portfolio runs the same frontend against a local fixture API that supplies fictional records and requires no Google credentials.
+The reference backend validates spreadsheet rows, normalizes dates, and returns application records and aggregate skipped-row counts from `GET /api/applications`. React validates the response before rendering. The same frontend can use a local fixture API. On GitHub Pages, it loads the fictional fixtures directly in the browser, with dates relative to when the demo opens.
 
 ## Quick Start
 
@@ -113,7 +115,7 @@ The live integration was verified with separate read-only identities for the pri
 
 **Phase 1 was completed and accepted on November 27, 2026.** The local, read-only dashboard passed seven user-confirmed manual cases within the available scenarios. TypeScript, the build, 20 unit tests, and 21 Playwright E2E tests passed. [Acceptance evidence and limits](docs/QA.md#phase-1-acceptance)
 
-The dashboard currently supports read-only tracking and visual follow-up reminders. The static fictional-data build is available for local preview. Hosting it, adding approved application updates, and exploring AI-assisted career features are future work.
+The dashboard currently supports read-only tracking and visual follow-up reminders. The static fictional-data demo is live on GitHub Pages. All eight public acceptance checks passed in a user-confirmed Chrome Incognito session. Authorized application updates and AI-assisted career features remain future work. [Public deployment and acceptance](docs/QA.md#public-demo-deployment-and-acceptance)
 
 ## Documentation
 
