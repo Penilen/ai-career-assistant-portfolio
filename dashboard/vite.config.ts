@@ -10,9 +10,11 @@ import siteConfiguration from "./.figma/make/site.json";
 export default defineConfig(({ mode }) => {
   // .figma/make/deploy-preview passes `--mode development` for cached-preview builds.
   const emitSourcemaps = mode === "development";
+  const portfolio = mode === "portfolio";
+  const figmaPublicUrl = process.env.FIGMA_PUBLIC_URL;
 
   return {
-    base: process.env.FIGMA_PUBLIC_URL ? `${process.env.FIGMA_PUBLIC_URL}/` : "/",
+    base: portfolio ? "/ai-career-assistant-portfolio/" : figmaPublicUrl ? `${figmaPublicUrl}/` : "/",
     build: {
       sourcemap: emitSourcemaps ? "inline" : false,
       minify: !emitSourcemaps,
@@ -37,7 +39,7 @@ export default defineConfig(({ mode }) => {
       port: parseInt(process.env.PORT || "8443"),
       strictPort: true,
       // Forward API requests from the dashboard to the local Node server.
-      proxy: { "/api": "http://127.0.0.1:3001" },
+      proxy: portfolio ? undefined : { "/api": "http://127.0.0.1:3001" },
       watch: {
         ignored: ["**/.figma/**"],
       },
