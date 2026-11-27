@@ -1,0 +1,14 @@
+{
+  "title": "AI Career Assistant",
+  "icons": {
+    "icon": "/favicon.svg"
+  },
+  "description": "Helps job seekers organize applications, track statuses and match ratings, and stay on top of follow-ups with a clear, searchable career dashboard.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

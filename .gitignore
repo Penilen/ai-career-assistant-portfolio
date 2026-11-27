@@ -1,0 +1,20 @@
+# Personal notes and local environment overrides
+PERSONAL_SETUP.local.md
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Local Google credentials and private configuration directories
+/.config/gcloud/
+/.config/career-assistant/
+/.local-config/
+application_default_credentials.json
+adc.local.json
+*.adc.json
+credentials.json
+service-account.json
+service-account-key.json
+*.service-account.json
+client_secret*.json
