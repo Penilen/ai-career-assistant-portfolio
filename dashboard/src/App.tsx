@@ -1,6 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
 import { isValidDate } from "./isValidDate";
 import { isApplications } from "./isApplications";
+import { sampleApplications } from "./sampleApplications";
 import {
   readSkippedApplicationRows, skippedApplicationRowsHeader, type SkippedApplicationRows,
 } from "./skippedApplicationRows";
@@ -206,6 +207,14 @@ type LoadState =
   | { status: "success"; applications: Application[]; skippedRows: SkippedApplicationRows | null };
 
 export default function App() {
+  if (import.meta.env.MODE === "portfolio") {
+    return <Dashboard applications={sampleApplications} skippedRows={null} />;
+  }
+
+  return <ApiDashboard />;
+}
+
+function ApiDashboard() {
   const [state, setState] = useState<LoadState>({ status: "loading" });
   // Changing this number starts a new request.
   const [attempt, setAttempt] = useState(0);
@@ -388,7 +397,7 @@ function Dashboard({ applications, skippedRows }: {
                 AI Career Assistant
               </div>
               <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#5f6f66]">
-                Career dashboard
+                {import.meta.env.MODE === "portfolio" ? "Portfolio demo · Fictional data" : "Career dashboard"}
               </div>
             </div>
           </div>

@@ -86,6 +86,17 @@ pnpm dev --host 127.0.0.1 --port 8443 --strictPort
 
 Open [http://127.0.0.1:8443/](http://127.0.0.1:8443/) and leave both terminals running. The demo requires no Google account or spreadsheet.
 
+### Preview the static portfolio build
+
+From `dashboard/`, build and preview the portfolio mode without starting the fixture API:
+
+```bash
+pnpm build:portfolio
+pnpm preview --mode portfolio --host 127.0.0.1 --port 4173 --strictPort
+```
+
+Open [http://127.0.0.1:4173/ai-career-assistant-portfolio/](http://127.0.0.1:4173/ai-career-assistant-portfolio/). This build loads fictional records in the browser and calculates their dates relative to the day you open it. The regular development command still uses the local API.
+
 ## Testing & Quality Assurance
 
 Node.js tests cover calendar validation, row mapping, and API behavior with mocked Sheets requests. The Chromium suite exercises loading and retry, search and filters, application details, and status-aware follow-up labels on desktop and mobile. The QA record distinguishes automated checks from manual results.
@@ -102,7 +113,7 @@ The live integration was verified with separate read-only identities for the pri
 
 **Phase 1 was completed and accepted on November 27, 2026.** The local, read-only dashboard passed seven user-confirmed manual cases within the available scenarios. TypeScript, the build, 20 unit tests, and 21 Playwright E2E tests passed. [Acceptance evidence and limits](docs/QA.md#phase-1-acceptance)
 
-The dashboard currently supports read-only tracking and visual follow-up reminders. A hosted fictional-data demo, approved application updates, and AI-assisted career features are future work.
+The dashboard currently supports read-only tracking and visual follow-up reminders. The static fictional-data build is available for local preview. Hosting it, adding approved application updates, and exploring AI-assisted career features are future work.
 
 ## Documentation
 
